@@ -8,6 +8,10 @@ import (
 type IndexHandler struct {
 }
 
+func NewIndexHandler() *IndexHandler {
+	return new(IndexHandler)
+}
+
 func (h *IndexHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case http.MethodGet:
