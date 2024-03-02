@@ -27,7 +27,8 @@ func (h *IndexHandler) get(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = tmpl.ExecuteTemplate(w, "Index", nil)
+	vm := NewIndexViewModel("Home Page")
+	err = tmpl.ExecuteTemplate(w, "Index", vm)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
