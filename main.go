@@ -2,14 +2,18 @@ package main
 
 import (
 	"log"
+	"matthewhope/go-webapp-js-components/router"
 	"matthewhope/go-webapp-js-components/ui"
 	"net/http"
+	"regexp"
 )
 
 func main() {
 	mux := http.NewServeMux()
 	serveStaticFiles(mux)
-	mux.Handle("/", &ui.IndexHandler{})
+	r := router.New()
+	r.AddHandler(regexp.MustCompile(`^/$`), ui.NewIndexHandler())
+	mux.Handle("/", r)
 	err := http.ListenAndServe(":8192", mux)
 	if err != nil {
 		log.Fatal(err.Error())
