@@ -1,7 +1,7 @@
 const template = document.createElement("template");
 template.innerHTML = `
     <div>
-        <slot name="example">Example Text</p>
+        <slot name="example">Example Text</slot>
     </div>
 `;
 
