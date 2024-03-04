@@ -12,13 +12,4 @@ window.addEventListener("load", () => {
     h1.innerText = "Whaddamegunnado";
     eg.appendChild(h1);
     main.appendChild(eg);
-    // const testNav = new Navbar();
-    // main.appendChild(testNav);
-    // const testBtn = document.createElement("button");
-    // testBtn.innerText = "Click Me!";
-    // testBtn.type = "button";
-    // testBtn.addEventListener("click", () => {
-    //     console.log("Button clicked.");
-    // })
-    // main.appendChild(testBtn);
 })

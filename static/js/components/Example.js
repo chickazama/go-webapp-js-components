@@ -22,3 +22,12 @@ export default class Example extends HTMLElement {
         console.log("Example component disconnected from DOM.");
     }
 }
+
+export function NewExample(str) {
+    const example = new Example();
+    const h1 = document.createElement("h1");
+    h1.setAttribute("slot", "example");
+    h1.innerText = str;
+    example.appendChild(h1);
+    return example;
+}
