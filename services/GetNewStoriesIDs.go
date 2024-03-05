@@ -7,8 +7,8 @@ import (
 	"net/http"
 )
 
-func GetNewStoriesIDs() ([]int, error) {
-	var ret []int
+func GetNewStoriesIDs() ([]int64, error) {
+	var ret []int64
 	url := fmt.Sprintf("%s%s", baseUrl, newStoriesEndpoint)
 	res, err := fetch(http.MethodGet, url, nil)
 	if err != nil {
