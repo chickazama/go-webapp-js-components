@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"sync"
+	"time"
 )
 
 var (
@@ -41,11 +42,13 @@ func GetItems(old, new int64, c chan int64) {
 					}
 					break
 				} else {
-					fmt.Println("Miss. Retrying...")
+					time.Sleep(time.Second)
+					fmt.Printf("Miss at %s. Retrying...\n", url)
 				}
 			}
 			wg.Done()
 		}()
 	}
 	wg.Wait()
+	fmt.Println("Batch done.")
 }
