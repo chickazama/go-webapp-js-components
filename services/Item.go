@@ -6,6 +6,7 @@ type Item struct {
 	Dead        bool    `json:"dead,omitempty"`
 	Descendants int64   `json:"descendents,omitempty"`
 	Deleted     bool    `json:"deleted,omitempty"`
+	Kids        []int64 `json:"kids"`
 	Parent      int64   `json:"parent,omitempty"`
 	Parts       []int64 `json:"parts,omitempty"`
 	Poll        int64   `json:"poll,omitempty"`
