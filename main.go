@@ -5,6 +5,7 @@ import (
 	"matthewhope/go-webapp-js-components/api"
 	"matthewhope/go-webapp-js-components/router"
 	"matthewhope/go-webapp-js-components/ui"
+	"matthewhope/go-webapp-js-components/ws"
 	"net/http"
 	"regexp"
 )
@@ -13,6 +14,7 @@ func main() {
 	mux := http.NewServeMux()
 	serveStaticFiles(mux)
 	r := router.New()
+	r.AddHandler(regexp.MustCompile(`^/ws$`), ws.NewWebSocketHandler())
 	r.AddHandler(regexp.MustCompile(`^/$`), ui.NewIndexHandler())
 	r.AddHandler(regexp.MustCompile(`^/test$`), api.NewDummyHandler())
 	mux.Handle("/", r)
