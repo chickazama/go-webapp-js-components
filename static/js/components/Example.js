@@ -25,6 +25,7 @@ export default class Example extends HTMLElement {
 
 export function NewExample(str) {
     const example = new Example();
+    example.classList.add("bg-primary", "text-light");
     const h1 = document.createElement("h1");
     h1.setAttribute("slot", "example");
     h1.innerText = str;
