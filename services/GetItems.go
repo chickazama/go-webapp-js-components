@@ -14,10 +14,10 @@ var (
 	wg sync.WaitGroup
 )
 
-func GetItems(old, new int64, c chan int64) {
+func GetItems(old, new int64, c chan Item) {
 	fmt.Printf("MAX ID: %d\n", new)
 	for i := old + 1; i <= new; i++ {
-		url := fmt.Sprintf("%s/item/%d.json", baseUrl, i)
+		url := fmt.Sprintf("%sitem/%d.json", baseUrl, i)
 		wg.Add(1)
 		go func() {
 			for {
@@ -38,12 +38,11 @@ func GetItems(old, new int64, c chan int64) {
 				if out.ID != 0 {
 					fmt.Printf("[%d]: %s\n", out.ID, out.Type)
 					if out.Type == "story" {
-						c <- out.ID
+						c <- out
 					}
 					break
 				} else {
-					time.Sleep(time.Second)
-					fmt.Printf("Miss at %s. Retrying...\n", url)
+					time.Sleep(100 * time.Millisecond)
 				}
 			}
 			wg.Done()
