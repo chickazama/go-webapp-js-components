@@ -1,6 +1,7 @@
 package services
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"log"
@@ -19,6 +20,11 @@ func GetItems(maxItemID, old int64) {
 		if err != nil {
 			log.Fatal(err.Error())
 		}
-		fmt.Printf("%s\n", buf)
+		var out Item
+		err = json.Unmarshal(buf, &out)
+		if err != nil {
+			log.Fatal(err.Error())
+		}
+		fmt.Printf("%+v\n", out)
 	}
 }
