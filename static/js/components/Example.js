@@ -1,8 +1,13 @@
 const template = document.createElement("template");
 template.innerHTML = `
-    <div>
-        <slot name="example">Example Text</slot>
-    </div>
+<style>
+    .eg {
+        background-color: red;
+    }
+</style>
+<div class="eg">
+    <slot name="example">Example Text</slot>
+</div>
 `;
 
 export default class Example extends HTMLElement {
@@ -14,8 +19,11 @@ export default class Example extends HTMLElement {
         this.shadowRoot.appendChild(tmpl);
     }
 
-    connectedCallback() {
-        console.log("Example component connected to DOM.");
+    async connectedCallback() {
+        console.log("Example component connected to DOM. Fetching data...");
+        const res = await fetch("/test");
+        const body = await res.json();
+        console.log(body);
     }
 
     disconnectedCallback() {
@@ -25,7 +33,6 @@ export default class Example extends HTMLElement {
 
 export function NewExample(str) {
     const example = new Example();
-    example.classList.add("bg-primary", "text-light");
     const h1 = document.createElement("h1");
     h1.setAttribute("slot", "example");
     h1.innerText = str;
