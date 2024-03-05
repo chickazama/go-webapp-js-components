@@ -2,6 +2,7 @@ package main
 
 import (
 	"log"
+	"matthewhope/go-webapp-js-components/api"
 	"matthewhope/go-webapp-js-components/router"
 	"matthewhope/go-webapp-js-components/ui"
 	"net/http"
@@ -13,6 +14,7 @@ func main() {
 	serveStaticFiles(mux)
 	r := router.New()
 	r.AddHandler(regexp.MustCompile(`^/$`), ui.NewIndexHandler())
+	r.AddHandler(regexp.MustCompile(`^/test$`), api.NewDummyHandler())
 	mux.Handle("/", r)
 	err := http.ListenAndServe(":8192", mux)
 	if err != nil {
