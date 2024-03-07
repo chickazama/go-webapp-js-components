@@ -2,6 +2,12 @@
 {{template "LayoutStart" .}}
 <main id="main">
     <h1>Hello!</h1>
+    {{range $item := .Items}}
+        <story-component id="{{$item.ID}}">
+            <a slot="title" href="{{$item.URL}}" target="_blank">{{$item.Title}}</a>
+            <h5 slot="comments">Comments: {{$item.Descendants}}</h5>
+        </story-component>
+    {{end}}
 </main>
 {{template "LayoutEnd" .}}
 {{end}}
