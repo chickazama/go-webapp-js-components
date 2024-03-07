@@ -9,6 +9,7 @@ const (
 	baseUrl            = "https://hacker-news.firebaseio.com/v0/"
 	maxItemEndpoint    = "maxitem.json"
 	newStoriesEndpoint = "newstories.json"
+	topStoriesEndpoint = "topstories.json"
 )
 
 func fetch(method, url string, body io.Reader) (*http.Response, error) {
