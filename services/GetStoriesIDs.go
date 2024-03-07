@@ -7,9 +7,9 @@ import (
 	"net/http"
 )
 
-func GetNewStoriesIDs() ([]int64, error) {
+func GetStoriesIDs(endpoint string) ([]int64, error) {
 	var ret []int64
-	url := fmt.Sprintf("%s%s", baseUrl, newStoriesEndpoint)
+	url := fmt.Sprintf("%s%s", baseUrl, endpoint)
 	res, err := fetch(http.MethodGet, url, nil)
 	if err != nil {
 		return ret, err
