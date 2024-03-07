@@ -7,6 +7,10 @@ import (
 	"net/http"
 )
 
+func GetJobStoriesIDs() ([]int64, error) {
+	return getStoriesIDs(jobStoriesEndpoint)
+}
+
 func GetNewStoriesIDs() ([]int64, error) {
 	return getStoriesIDs(newStoriesEndpoint)
 }
