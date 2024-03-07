@@ -8,6 +8,7 @@ import (
 const (
 	baseUrl            = "https://hacker-news.firebaseio.com/v0/"
 	maxItemEndpoint    = "maxitem.json"
+	jobStoriesEndpoint = "jobstories.json"
 	newStoriesEndpoint = "newstories.json"
 	topStoriesEndpoint = "topstories.json"
 )
