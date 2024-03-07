@@ -14,7 +14,7 @@ var (
 	wg sync.WaitGroup
 )
 
-func GetItems(old, new int64, c chan Item) {
+func GetNewItems(old, new int64, c chan Item) {
 	fmt.Printf("MAX ID: %d\n", new)
 	for i := old + 1; i <= new; i++ {
 		url := fmt.Sprintf("%sitem/%d.json", baseUrl, i)
