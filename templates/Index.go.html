@@ -3,9 +3,10 @@
 <main id="main">
     <h1>Hello!</h1>
     {{range $item := .Items}}
-        <story-component id="{{$item.ID}}">
+        <story-component id="{{$item.ID}}" show="false">
             <a slot="title" href="{{$item.URL}}" target="_blank">{{$item.Title}}</a>
-            <h5 slot="comments">Comments: {{$item.Descendants}}</h5>
+            <h5 slot="score">Score: {{$item.Score}}</h5>
+            <h5 slot="comments">Show Comments ({{$item.Comments}})</h5>
         </story-component>
     {{end}}
 </main>
