@@ -4,6 +4,7 @@ import (
 	"log"
 	"matthewhope/go-webapp-js-components/api"
 	"matthewhope/go-webapp-js-components/router"
+	"matthewhope/go-webapp-js-components/services"
 	"matthewhope/go-webapp-js-components/ui"
 	"matthewhope/go-webapp-js-components/ws"
 	"net/http"
@@ -11,12 +12,13 @@ import (
 )
 
 func main() {
+	services.Init()
 	mux := http.NewServeMux()
 	serveStaticFiles(mux)
 	r := router.New()
 	r.AddHandler(regexp.MustCompile(`^/ws$`), ws.NewWebSocketHandler())
 	r.AddHandler(regexp.MustCompile(`^/$`), ui.NewIndexHandler())
-	r.AddHandler(regexp.MustCompile(`^/test$`), api.NewDummyHandler())
+	r.AddHandler(regexp.MustCompile(`^/api/comments$`), api.NewCommentsHandler())
 	mux.Handle("/", r)
 	err := http.ListenAndServe(":8192", mux)
 	if err != nil {
